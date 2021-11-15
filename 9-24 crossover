@@ -1,0 +1,19 @@
+//@version=3
+// Disclaimer: I am not a financial advisor.
+
+study("SMA Cross",overlay=true)
+
+SMA_1 =input(9, minval=1) 
+SMA_2 =input(24, minval=1)
+
+s1=sma(close,SMA_1) 
+s2=sma(close,SMA_2)
+
+plot(s1,color=lime)
+plot(s2, color=red)
+
+buy= crossover(s1,s2)
+sell= crossunder(s1,s2)
+
+plotchar(buy,char="?",text="Buy",color=lime,location=location.belowbar,transp=0)
+plotchar(sell,char="?",text="Sell",color=red,location=location.abovebar,transp=0)
